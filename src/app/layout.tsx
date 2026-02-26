@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Sakinah سكينة — Digital Tasbih & Prayer Times',
   description: 'A floating digital tasbih counter with prayer times and Adhan reminders for Android. Find peace, one dhikr at a time.',
   keywords: 'tasbih, dhikr, prayer times, adhan, muslim app, islamic app, sakinah',
-  metadataBase: new URL('https://sakinahapp.vercel.app'),
+  metadataBase: new URL('https://sakinahweb.vercel.app'),
   openGraph: {
     title: 'Sakinah سكينة',
     description: 'Your digital tasbih. Find peace, one dhikr at a time.',
