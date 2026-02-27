@@ -40,27 +40,39 @@ export default function Feedback() {
     setStatus('sending')
 
     try {
-      const formData = new FormData()
-      formData.append('name', form.name)
-      formData.append('email', form.email)
-      formData.append('type', form.type)
-      formData.append('message', form.message)
-      images.forEach((img, i) => formData.append(`image${i}`, img))
+      const screenshotNote = images.length > 0
+        ? `\n\n[${images.length} screenshot(s) attached by user — ${images.map(f => f.name).join(', ')}]`
+        : ''
 
-      const res = await fetch('/api/feedback', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '369752f3-8121-44f3-9edf-2038c216117d',
+          subject: `[${form.type.toUpperCase()}] Sakinah feedback from ${form.name}`,
+          from_name: form.name,
+          email: form.email,
+          message: `Type: ${form.type}\n\nFrom: ${form.name} (${form.email})\n\n${form.message}${screenshotNote}`,
+          botcheck: false,
+        }),
       })
 
-      if (res.ok) {
+      const data = await res.json()
+
+      if (data.success) {
         setStatus('sent')
         setForm({ name: '', email: '', type: 'feedback', message: '' })
         setImages([])
         setPreviews([])
       } else {
+        console.error('Web3Forms error:', data)
         setStatus('error')
       }
-    } catch {
+    } catch (err) {
+      console.error('Submit error:', err)
       setStatus('error')
     }
   }
@@ -161,7 +173,7 @@ export default function Feedback() {
               />
             </div>
 
-            {/* Image upload */}
+            {/* Image upload — filenames noted in message */}
             <div>
               <label className="text-xs tracking-widest uppercase block mb-2"
                 style={{ color: 'rgba(201,168,74,0.6)' }}>
