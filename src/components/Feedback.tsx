@@ -44,22 +44,19 @@ export default function Feedback() {
         ? `\n\n[${images.length} screenshot(s) attached — ${images.map(f => f.name).join(', ')}]`
         : ''
 
-      const res = await fetch(
-        `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            type: form.type,
-            message: `Type: ${form.type}\n\nFrom: ${form.name} (${form.email})\n\n${form.message}${screenshotNote}`,
-          }),
-        }
-      )
+      const res = await fetch('https://formspree.io/f/mdaljadb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          type: form.type,
+          message: `Type: ${form.type}\n\nFrom: ${form.name} (${form.email})\n\n${form.message}${screenshotNote}`,
+        }),
+      })
 
       const data = await res.json()
 
