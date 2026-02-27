@@ -17,15 +17,27 @@ export async function POST(req: NextRequest) {
         from_name: name,
         email: email,
         message: `Type: ${type}\n\nFrom: ${name} (${email})\n\n${message}`,
+        redirect: false,
       }),
     })
 
-    const data = await res.json()
+    const text = await res.text()
+
+    let data: { success: boolean; message?: string }
+    try {
+      data = JSON.parse(text)
+    } catch {
+      console.error('Web3Forms returned non-JSON:', text.slice(0, 200))
+      return NextResponse.json({ error: 'Service error' }, { status: 500 })
+    }
+
     if (data.success) {
       return NextResponse.json({ success: true })
     } else {
+      console.error('Web3Forms error:', data.message)
       return NextResponse.json({ error: data.message || 'Failed' }, { status: 500 })
     }
+
   } catch (error) {
     console.error('Feedback error:', error)
     return NextResponse.json({ error: 'Failed to send' }, { status: 500 })
