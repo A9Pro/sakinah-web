@@ -217,7 +217,7 @@ export default function Feedback() {
 
             {status === 'error' && (
               <p className="text-center text-xs" style={{ color: '#ff6b6b' }}>
-                Something went wrong. Please try emailing sakinahapp@gmail.com
+                Something went wrong. Please try emailing sakinahhapp@gmail.com
               </p>
             )}
 
