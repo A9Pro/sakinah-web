@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_KEY,
+        access_key: '369752f3-8121-44f3-9edf-2038c216117d',
         subject: `[${type.toUpperCase()}] Sakinah feedback from ${name}`,
         from_name: name,
         email: email,
@@ -24,10 +24,10 @@ export async function POST(req: NextRequest) {
     if (data.success) {
       return NextResponse.json({ success: true })
     } else {
-      return NextResponse.json({ error: 'Failed' }, { status: 500 })
+      return NextResponse.json({ error: data.message || 'Failed' }, { status: 500 })
     }
   } catch (error) {
-    console.error(error)
+    console.error('Feedback error:', error)
     return NextResponse.json({ error: 'Failed to send' }, { status: 500 })
   }
 }
