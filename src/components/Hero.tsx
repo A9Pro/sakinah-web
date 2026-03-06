@@ -56,7 +56,7 @@ export default function Hero() {
       {/* Download button */}
       <div id="download" className="flex flex-col sm:flex-row gap-4 items-center">
         <a
-          href="/sakinah-beta-v1.apk"
+          href="/sakinah-beta-v2.apk"
           download
           className="flex items-center gap-3 px-8 py-4 rounded-full text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
           style={{
@@ -70,7 +70,7 @@ export default function Hero() {
         </a>
         <div className="text-xs tracking-widest"
           style={{ color: 'rgba(232,213,183,0.35)' }}>
-          v1.0 Beta · Android · Free
+          v2.0 Beta · Android · Free
         </div>
       </div>
 

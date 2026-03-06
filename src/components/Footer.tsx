@@ -17,7 +17,7 @@ export default function Footer() {
             <div>
               <div className="text-2xl" style={{ color: '#C9A84A', fontFamily: 'serif' }}>سكينة</div>
               <div className="text-xs tracking-widest uppercase"
-                style={{ color: 'rgba(232,213,183,0.3)' }}>Sakinah · Beta v1.0</div>
+                style={{ color: 'rgba(232,213,183,0.3)' }}>Sakinah · Beta v2.0</div>
             </div>
           </div>
 

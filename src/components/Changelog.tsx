@@ -1,14 +1,15 @@
 export default function Changelog() {
   const versions = [
     {
-      version: 'v1.0 Beta',
-      date: 'February 2026',
+      version: 'v2.0 Beta',
+      date: 'March 2026',
       tag: 'Latest',
       changes: [
         'Floating tasbih counter over all apps',
         '5 dhikr presets with custom goals',
         'Prayer times calculated from GPS or city search',
         'Adhan reminders for all 5 prayers + Tahajjud',
+        'Duas from the Holy Quran and Authentic Hadiths',
         'Dhikr reminder with device alarm',
         'Session history and streak tracking',
         'About page with how-to guide',
